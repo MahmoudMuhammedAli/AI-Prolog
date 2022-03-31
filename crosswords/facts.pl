@@ -1,3 +1,8 @@
+# A drawing of the puzzle 6x4. 
+# "---" represents a blocked square.
+
+
+
 # l1  | l2  | l3  | l4  | l5  | ---
 # l6  | --- | l7  | --- | l8  | ---
 # l9  | l10 | l11 | l12 | l13 | l14
