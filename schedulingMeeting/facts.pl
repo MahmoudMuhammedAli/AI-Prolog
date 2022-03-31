@@ -8,6 +8,12 @@ professor( crypto, abdelghany).
 professor( compilers, gehad). 
 professor( artificial_intelligence, omar). 
 
+session( Time, Topic, Pl, P2) :-
+ time( Time), 
+ professor( Topic, P1), 
+ professor( Topic, P2), 
+ Pl\= P2. 
+ 
 # case when sessions are at different time
 no_conflict(Session_Time1, _, _,Session_Time2,_,_) :-
   Session_Time1 \= Session_Time2.
@@ -17,17 +23,12 @@ no_conflict(SessionTime, Session1Professor1, Session2Professor2, SessionTime, Se
   Session1Professor1 \= Session2Professor1,
   Session1Professor2 \= Session2Professor2.
 
-schedule( Ta, Al, A2, Tb, B1, B2, Td, DI, D2) :-
- session( Ta, artificial_intelligence, Al, A2), 
- session( Tb, compilers, Bl, B2), 
- session( Td, crypto, Dl, D2), 
- no_conflict( Ta, Al, A2, Tb, B1, B2), 
- no_conflict( Ta, Al, A2, Td, DI, D2), 
- no_conflict( Tb, B1, B2, Td, Dl, D2). 
+schedule( TimeOfSession1, S1P1, S1P2, TimeOfSession2, S2P1, S2P2, TimeOfSession3, S3P1, S3P2) :-
+ session( TimeOfSession1, artificial_intelligence, S1P1, S1P2), 
+ session( TimeOfSession2, compilers, S2P1, S2P2), 
+ session( TimeOfSession3, crypto, S3P1, S3P2), 
+ no_conflict( TimeOfSession1, S1P1, S1P2, TimeOfSession2, S2P1, S2P2), 
+ no_conflict( TimeOfSession1, S1P1, S1P2, TimeOfSession3, S3P1, S3P2), 
+ no_conflict( TimeOfSession2, S2P1, S2P2, TimeOfSession3, S3P1, S3P2). 
 
-session( Time, Topic, Pl, P2) :-
- time( Time), 
- professor( Topic, P1), 
- professor( Topic, P2), 
- Pl\= P2. 
 
